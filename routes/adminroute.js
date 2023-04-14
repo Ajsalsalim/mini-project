@@ -9,11 +9,13 @@ const adminmiddleware = require("../middlewares/adminmiddleware")
 const admincontroller= require("../controllers/admincontroller")
 const ordercontroller= require("../controllers/ordercontroller")
 const productcontroller = require("../controllers/productcontroller")
-const catcontroller = require("../controllers/catcontroller")
+const catcontroller = require("../controllers/catcontroller")   
 const subcatcontroller = require("../controllers/subcatcontroller")
 const couponcontroller = require("../controllers/couponcontroller")
 
 const multer = require('multer');
+
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
