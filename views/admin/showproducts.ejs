@@ -1,0 +1,140 @@
+
+
+
+
+<%- include("../layouts/adminheader.ejs") %>
+    <%- include("../layouts/bars.ejs") %>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                  
+                    
+                        <div class="dropdown-menu " aria-labelledby="dropdownAccount">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-muted" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                            
+                        </div>            
+
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/img/categories/unnamed.jpg" alt="User"></a>
+                       
+                        
+                </ul>
+            </div>
+        </header>
+        <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Product list</h2>
+                    <p>Here you can see the added products</p>
+                </div>
+                <div>
+                    <!-- <a href="#" class="btn btn-light rounded font-md">Export</a> --> 
+                    <!-- <a href="#" class="btn btn-light rounded  font-md">Import</a> -->
+                    <a href="/admin/addproduct" class="btn btn-primary btn-sm rounded">Add new</a>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <header class="card-header">
+                    <div class="row gx-3">
+                        <form >
+                            <div class="input-group">
+                                <input list="search_terms" type="text" class="form-control" placeholder="Search term" name="search">
+                                <input class="btn btn-primary" type="submit" value="search"> 
+                            </div>
+                           
+                        </form>
+                        <!-- <div class="col-lg-2 col-6 col-md-3">
+                            <select class="form-select">
+                                <% categories.forEach(function(categories) { %>
+                                <option  value="<%=categories._id %>"><%= categories.name %></option>
+                                <% }) %>
+                            </select>
+                        </div> -->
+                       
+                    </div>
+                </header> <!-- card-header end// -->
+             
+                <div class="card-body">
+                    
+                    <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5">
+                        <% products.forEach(function(products){ %>
+                        <div class="col">
+                            <div class="card card-product-grid">
+                                
+                                <% if(products.images.length > 0){ %>
+                                    <img style="height:17rem;width:15.5rem" src="/uploads/<%= products.images[0] %>" alt="<%= products.name %>">
+                                <% } %>
+                                
+                            
+                                
+                                    
+                                    
+                                    
+                                <div class="info-wrap">
+                                    <h5 class="title text-truncate"><%= products.name %></h5>
+                                    <div class="price mb-2"><%= products.price %></div> <!-- price.// -->
+                                    <h5 class="title text-truncate"><%= products.subcategory.name %></h5>
+                                    <h6 class="title text-truncate"> stock:<%= products.stock %></h6>
+
+                                    <a href="/admin/editproduct?id=<%= products._id %>" class=" btn btn-sm-primary font-sm rounded btn-brand">
+                                        <i class="material-icons md-edit"></i> Edit
+                                    </a>
+                                    <a href="#" data-id="<%= products._id %>" class=" btn btn-sm-primary font-sm rounded btn-brand delete-category-btn">
+                                        <i class="material-icons md-delete_forever"></i> Delete
+                                    </a>
+                                    <script>
+                                        // Add click event listener to all delete category buttons
+                                        document.querySelectorAll('.delete-category-btn').forEach(button => {
+                                          button.addEventListener('click', function(event) {
+                                            event.preventDefault();
+                                            const productID = this.getAttribute('data-id');
+                                        
+                                            // Show SweetAlert confirmation dialog
+                                            swal({
+                                              title: "Are you sure?",
+                                              text: "Once deleted, you will not be able to recover this product!",
+                                              icon: "warning",
+                                              buttons: true,
+                                              dangerMode: true,
+                                            })
+                                            .then((willDelete) => {
+                                              if (willDelete) {
+                                                // If user confirms deletion, redirect to deleteCategory route with categoryID parameter
+                                                window.location.href = `/admin/deleteproduct?id=${productID}`;
+                                              } else {
+                                                // If user cancels deletion, do nothing
+                                                return;
+                                              }
+                                            });
+                                          });
+                                        });
+                                        </script>
+                                </div>
+                                
+                            </div> <!-- card-product  end// -->
+                        </div> <!-- col.// --><% }) %>
+                        
+                    </div> <!-- row.// -->  
+                    
+                </div> 
+            </div> <!-- card end// -->
+           
+            <div class="pagination-area mt-30 mb-50">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-start">
+                        <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                        <li class="page-item"><a class="page-link" href="#">02</a></li>
+                        <li class="page-item"><a class="page-link" href="#">03</a></li>
+                        <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#">16</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </main>
+    <%- include("../layouts/adminfooter.ejs") %>
+        
+   

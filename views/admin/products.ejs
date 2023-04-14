@@ -1,0 +1,146 @@
+<%- include("../layouts/adminheader.ejs") %>
+   <%- include("../layouts/bars.ejs") %>
+   <main class="main-wrap">
+    <header class="main-header navbar">
+      
+        <div class="col-nav">
+            <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+            <ul class="nav">
+              
+                
+                    <div class="dropdown-menu " aria-labelledby="dropdownAccount">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-muted" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                        
+                    </div>            
+
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/img/categories/unnamed.jpg" alt="User"></a>
+                   
+                    
+            </ul>
+        </div>
+    </header>
+   <section class="content-main">
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-6">
+            <div class="content-header">
+                <h2 class="content-title">Add New Product</h2>
+                <div>
+                
+                    <button type="submit" class="btn btn-md rounded font-sm hover-up">Add</button>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>1. General info</h6>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="mb-4">
+                                <label class="form-label">Name</label>
+                                <input name="name" type="text" placeholder="Type here" class="form-control">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Description</label>
+                                <textarea name="description" placeholder="Type here" class="form-control" rows="4"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Sub category</label>
+                             
+                                <select name="mysubcategory" class="form-select">
+                                    <% subcategories.forEach(function(subcategories) { %>
+                                    <option value="<%=subcategories._id %>"><%= subcategories.name %></option>
+                                    <% }) %>
+                                    </select>
+                                
+                            </div>
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+                    <hr class="mb-4 mt-0">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>2. Pricing</h6>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="mb-4">
+                                <label class="form-label">Cost in INR</label>
+                                <input name="price" type="number" placeholder="RS.00.0" class="form-control">
+                            </div>
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+                    <hr class="mb-4 mt-0">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>3. Stock</h6>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="mb-4">
+                                <label class="form-label">No:of stocks</label>
+                                <input name="stock" type="number" placeholder="0" class="form-control">
+                            </div>
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+                    <hr class="mb-4 mt-0">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>4. Category</h6>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="mb-4">
+                                <% categories.forEach(function(categories) { %>
+                                <label class="mb-2 form-check form-check-inline" style="width: 45%;">
+                                    <input value="<%=categories._id %>" class="form-check-input" checked="" name="mycategory" type="radio">
+                                    <span class="form-check-label"> 
+                                        <%= categories.name %>
+                                    </span>
+                                </label>
+                                <% }) %>
+                                
+                              
+                            </div>
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+                    <hr class="mb-4 mt-0">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h6>5. Media</h6>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="mb-4">
+                                <label class="form-label">Images</label>
+                                <input class="form-control" type="file" name="productpic" multiple>
+                            </div>
+                            <h4  id="message"style="color: rgb(26, 82, 28);"><%= message %></h4>
+
+                        </div> <!-- col.// -->
+                    </div> <!-- .row end// -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</form>
+<div>
+
+</div>
+</section>
+<script>
+    $(document).ready(function() {
+        $('#message').fadeIn('slow');
+        setTimeout(function() {
+            $('#message').fadeOut('slow');
+        }, 2000);
+    });
+</script>
+
+
+<%- include("../layouts/adminfooter.ejs") %>
+

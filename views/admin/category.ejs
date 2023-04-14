@@ -1,0 +1,141 @@
+    
+    <%- include("../layouts/adminheader.ejs") %>
+    <%- include("../layouts/bars.ejs") %>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+           
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                  
+                    
+                        <div class="dropdown-menu " aria-labelledby="dropdownAccount">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-muted" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                            
+                        </div>            
+
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/img/categories/unnamed.jpg" alt="User"></a>
+                       
+                        
+                </ul>
+            </div>
+        </header>
+        <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Categories </h2>
+                    <p>Add, edit or delete a category</p>
+                </div>
+                <form >
+                    <div class="input-group">
+                        <input list="search_terms" type="text" class="form-control" placeholder="Search term" name="search">
+                        <input class="btn btn-primary" type="submit" value="search"> 
+                    </div>
+                   
+                </form>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form action="" method="post">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Name</label>
+                                    <input name="name" type="text" placeholder="Type here" class="form-control" id="product_name" />
+                                </div>
+                               
+                                <div class="mb-4">
+                                    <label class="form-label">Description</label>
+                                    <textarea name="description" type="text" placeholder="Type here" class="form-control"></textarea>
+                                </div>
+                                <div class="d-grid">
+                                    <button class="btn btn-primary">Create category</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>No:</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                           
+                                            
+                                                <% 
+                                                if(categories.length > 0 ){
+                                                    for(let i=0;i<categories.length;i++){
+                                                        %>
+                                                        <tr>
+                                                            <td><%= i+1 %> </td>
+                                                            <td><%= categories[i].name %> </td>
+                                                            <td><%= categories[i].description %> </td>
+                                                            <td><a href="/admin/editcategory?id=<%= categories[i]._id %>" class="btn btn-primary">Edit</a>
+                                                                <a href="#" data-id="<%= categories[i]._id %>" class="btn btn-primary delete-category-btn">Delete</a></td>
+
+                                                                <script>
+                                                                // Add click event listener to all delete category buttons
+                                                                document.querySelectorAll('.delete-category-btn').forEach(button => {
+                                                                  button.addEventListener('click', function(event) {
+                                                                    event.preventDefault();
+                                                                    const categoryID = this.getAttribute('data-id');
+                                                                
+                                                                    // Show SweetAlert confirmation dialog
+                                                                    swal({
+                                                                      title: "Are you sure?",
+                                                                      text: "Once deleted, you will not be able to recover this category!",
+                                                                      icon: "warning",
+                                                                      buttons: true,
+                                                                      dangerMode: true,
+                                                                    })
+                                                                    .then((willDelete) => {
+                                                                      if (willDelete) {
+                                                                        // If user confirms deletion, redirect to deleteCategory route with categoryID parameter
+                                                                        window.location.href = `/admin/deletecategory?id=${categoryID}`;
+                                                                      } else {
+                                                                        // If user cancels deletion, do nothing
+                                                                        return;
+                                                                      }
+                                                                    });
+                                                                  });
+                                                                });
+                                                                </script>
+                  
+                                                        </tr>
+                                                        <%
+                                                    }
+                                                }  else{ %>
+                                                  <tr>
+                                                      <td colspan="5">categories not found </td>
+                                                  </tr>
+                                                  <% }
+                                            %>
+                                                
+
+                                            
+                                            <!-- <td>Men clothes</td> -->
+                                            <!-- <td>/men</td> -->
+                                            <!-- <td>1</td> -->
+                                           
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+   
+   
+    <%- include("../layouts/adminfooter.ejs") %>

@@ -1,0 +1,287 @@
+    
+    <%- include("../layouts/adminheader.ejs") %>
+    <%- include("../layouts/bars.ejs") %>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+           
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                  
+                    
+                        <div class="dropdown-menu " aria-labelledby="dropdownAccount">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-muted" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                            
+                        </div>            
+
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/img/categories/unnamed.jpg" alt="User"></a>
+                       
+                        
+                </ul>
+            </div>
+
+
+
+
+
+
+        </header>
+        <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">dashboard </h2>
+                    
+                </div>
+                <form >
+                    <div class="input-group">
+                        <input list="search_terms" type="text" class="form-control" placeholder="Search term" name="search">
+                        <input class="btn btn-primary" type="submit" value="search"> 
+                    </div>
+                   
+                </form>
+            </div>
+
+
+            <div class="card">
+                <div class="card-body">
+
+
+                    
+                           
+                            
+                                <div class=bg-muted>
+                                    <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                                    <div class="ms-3">
+                                        <p class="mb-2">Sale</p>
+                                        <h6 class="mb-0">
+                                            <%=sales%>
+                                        </h6>
+                                    </div>
+                                </div>
+                         <br>
+                          
+                    
+                                <div class="bg-muted ">
+                                    <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                                    <div class="ms-3">
+                                        <p class="mb-2">Total Revenue</p>
+                                        <h6 class="mb-0"><%=totalRevenue%></h6>
+                                    </div>
+                                </div>
+                          
+
+
+
+
+
+
+                    
+                </div>
+            </div>
+
+
+
+
+            <br>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        
+                        <div class="col-md-12">
+                           
+                            
+                           
+                                <div style=" margin-left:5% ; width: 90%; height: 60vh; background-color: rgb(255, 255, 255) ;">
+                                    <canvas id="myChart56" class="mt-5" style="margin-left: 19%; width:100%;max-width:700px"></canvas>
+                                </div>
+
+                               
+                    
+                           
+                            <input type="hidden" id="pds" value="<%=pds%>">
+                            <input type="hidden" id="qty" value="<%=qty%>">
+                            <input type="hidden" id="key1" value="<%=key1%>" />
+                            <input type="hidden" id="key2" value="<%=key2%>" />
+                    
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+                            </script>
+                            <script>
+                    
+                                x = document.getElementById("pds").value;
+                                y = document.getElementById("qty").value;
+                                xValues = x.split(",")
+                                yValues = y.split(",")
+                                key1 = document.getElementById('key1').value
+                                key2 = document.getElementById('key2').value
+                                xValue = key1.split(",")
+                                yValue = key2.split(",")
+                                console.log(xValue, yValue);
+                    
+                                var barColors = [
+                                    "#b91d47",
+                                    "#2b5797",
+                                    "#e8c3b9",
+                                    "#1e7145",
+                                    "#0000FF",
+                                    "#FFFF00"
+                                ];
+                    
+                                new Chart("myChart56", {
+                                    type: "bar",
+                                    data: {
+                                        labels: xValues,
+                                        datasets: [{
+                                            label: "Stock remains",
+                                            backgroundColor: barColors,
+                                            data: yValues,
+                                        }]
+                                    },
+                                    options: {
+                                        title: {
+                                            display: true,
+                                            text: "Products and Available Stock"
+                                        }
+                                    }
+                                });
+                                new Chart("myChart67", {
+                                    type: "pie",
+                                    data: {
+                                        labels: xValue,
+                                        datasets: [{
+                                            backgroundColor: barColors,
+                                            data: yValue
+                                        }]
+                                    },
+                                    options: {
+                                        title: {
+                                            display: true,
+                                            text: "Productwise Sale"
+                                        }
+                                    }
+                                });
+                            </script>
+                         <br>
+                          
+                    
+                                
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <br>
+                </div>
+            </div>
+
+
+
+
+
+            <br>
+
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        
+                        <div class="col-md-12">
+                           
+                            
+                           
+                                <div style="margin-left:5% ; width:90%; height: 60vh; background-color: rgb(255, 255, 255) ; ">
+                    
+                                    <canvas id="myChart67" class="mt-5" style="margin-left: 19%;  width:100%;max-width:700px"></canvas>
+                                </div>
+
+                               
+                    
+                     
+                            <input type="hidden" id="pds" value="<%=pds%>">
+                            <input type="hidden" id="qty" value="<%=qty%>">
+                            <input type="hidden" id="key1" value="<%=key1%>" />
+                            <input type="hidden" id="key2" value="<%=key2%>" />
+                    
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+                            </script>
+                            <script>
+                    
+                                x = document.getElementById("pds").value;
+                                y = document.getElementById("qty").value;
+                                xValues = x.split(",")
+                                yValues = y.split(",")
+                                key1 = document.getElementById('key1').value
+                                key2 = document.getElementById('key2').value
+                                xValue = key1.split(",")
+                                yValue = key2.split(",")
+                                console.log(xValue, yValue);
+                    
+                                var barColors = [
+                                    "#b91d47",
+                                    "#2b5797",
+                                    "#e8c3b9",
+                                    "#1e7145",
+                                    "#0000FF",
+                                    "#FFFF00"
+                                ];
+                    
+                                new Chart("myChart56", {
+                                    type: "bar",
+                                    data: {
+                                        labels: xValues,
+                                        datasets: [{
+                                            label: "Stock remains",
+                                            backgroundColor: barColors,
+                                            data: yValues,
+                                        }]
+                                    },
+                                    options: {
+                                        title: {
+                                            display: true,
+                                            text: "Products and Available Stock"
+                                        }
+                                    }
+                                });
+                                new Chart("myChart67", {
+                                    type: "pie",
+                                    data: {
+                                        labels: xValue,
+                                        datasets: [{
+                                            backgroundColor: barColors,
+                                            data: yValue
+                                        }]
+                                    },
+                                    options: {
+                                        title: {
+                                            display: true,
+                                            text: "Productwise Sale"
+                                        }
+                                    }
+                                });
+                            </script>
+                        
+                          
+                    
+                                
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <br>
+                </div>
+            </div>
+
+
+        </section>
+    </main>
+   
+   
+    <%- include("../layouts/adminfooter.ejs") %>

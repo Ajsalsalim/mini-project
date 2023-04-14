@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NEW JERSEY</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/js/jquery.slicknav.js" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="magiczoom/magiczoom.css" type="text/css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <ul class="offcanvas__widget">
+        
+            <li><a href="/wishlistload"><span class="icon_heart_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+            <li><a href="/cartload"><span class="icon_bag_alt"></span>
+                <div class="tip">2</div>
+            </a></li>
+        </ul>
+        <div class="offcanvas__logo">
+           
+ 
+
+            <a href="./index.html"><img style="height: 150px;width: 200px" src="/img/new-jersey-hand-drawn-lettering-text-us-state-name-isolated-white-background-modern-calligraphy-posters-cards-t-shirts-138304260-removebg-preview.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+            <% if (loggedIn) { %>
+                                
+            <a href="/logout">Logout</a>
+               
+             <% } else { %>
+               
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+             <% } %>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img style="height: 7.5rem;" src="/img/new-jersey-hand-drawn-lettering-text-us-state-name-isolated-white-background-modern-calligraphy-posters-cards-t-shirts-138304260-removebg-preview.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-7">
+                 <nav style="width:75rem;" class="header__menu ul li a:after">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                             <!-- <li><a href="#">Women’s</a></li> -->
+                            <!-- <li><a href="#">Men’s</a></li> -->
+                            
+                            <% for (var i = 0; i<categories.length; i++) { %>
+                                <li><a href="/productload?categoryid=<%= categories[i]._id %>"><%= categories[i].name %></a>
+                                  <% const categorySubcategories = subcategories.filter(subcategory => subcategory.category.toString() === categories[i]._id.toString()) %>
+                                  <% if (categorySubcategories.length > 0) { %>
+                                    <ul class="dropdown">
+                                      <% for (var j = 0; j < categorySubcategories.length; j++) { %>
+                
+                                        <li><a href="/productload?subcategoryid=<%=categorySubcategories[j]._id %>"><%= categorySubcategories[j].name %></a></li>
+                                    
+                                     <% } %>
+                                    </ul>
+                                  <% } %>
+                                </li> 
+                              <% } %>
+                              
+                            
+                              
+                              
+
+                             <li><a href="<% if(loggedIn){%>/profileload<%}else{%>/login<%}%>">Profile</a>
+                                <ul class="dropdown">
+                                
+                                    <li><a href="<% if(loggedIn){%>/checkoutload<%}else{%>/login?access=Please login to continue<%}%>">Checkout</a></li>
+                                
+                                </ul>
+                             </li>
+                          <!-- <li><a href="#">category</a>  -->
+                            
+                              
+                            
+                            <!-- <li><a href="./blog.html">shop</a></li> -->
+                         
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__right">
+                        <div class="header__right__auth">
+                            <% if (loggedIn) { %>
+                                
+                                 <button class="btn " style="background-color: #f49191;" type="button"><a style="text-decoration: none; color: #fff;" href="/logout">Logout</a></button>
+                                
+                              <% } else { %>
+                                
+                                  <button class="btn"style="background-color: #f49191;" type="button"><a style="text-decoration: none; color: #fff;" href="/login">Login</a></button>
+                                  <button class="btn"style="background-color: #f49191;" type="button"><a style="text-decoration: none; color: #fff;" href="/register">Register</a></button>
+                              <% } %>
+                        
+                                 
+                           
+                        </div>
+                        
+                          
+                        <ul class="header__right__widget">
+
+                            <li><a href="/wishlistload"><span class="icon_heart_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                            <li><a href="/cartload"><span class="icon_bag_alt"></span>
+                                <div class="tip">2</div>
+                            </a></li>
+                        </ul>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+           
+        </div>
+    </header>
+    <!-- Header Section End -->

@@ -1,0 +1,333 @@
+<%- include("../layouts/userheader.ejs") %>
+
+    <!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    
+                    <div class="categories__item categories__large__item set-bg"
+                    data-setbg="/img/categories/1442809583.webp">
+                    <div class="categories__text">
+                        <%
+                        if(loggedIn)  { 
+                            %>
+                        <h4 id="message">Welcome <%=userData %></h4>
+                        <%
+                        }
+                        %>
+                        <style>
+                         #message {
+                         animation: fadeOut 3s linear forwards;
+                         }
+
+                         @keyframes fadeOut {
+                         from { opacity: 1; }
+                         to { opacity: 0; }
+                        }
+
+                        </style>
+                        <script>
+                            $(document).ready(function() {
+                          setTimeout(function() {
+                       $('#message').addClass('animated');
+                          }, 3000);
+                        });
+
+                        </script>
+
+                        
+                        <h1 style="color:#f3f4ef"> Jersey</h1>
+                        <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
+                        edolore magna aliquapendisse ultrices gravida.</p>
+                        <a href="/productload?id=63fbc20eb0db5388d5a6d264">Shop now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                        <div class="categories__item set-bg" data-setbg="/img/categories/cristiano_juventus_ferrari_6417.webp">
+                            <div class="categories__text"  style="margin-top: 10rem;">
+                                <h4 style="color:#fff">Shorts</h4>
+                                <p>358 items</p>
+                                <a href="/productload?id=63fbc275b0db5388d5a6d266">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                        <div class="categories__item set-bg" data-setbg="/img/categories/1068558-image11.webp">
+                            <div class="categories__text" style="margin-top: 10rem;">
+                                <h4 style="color:#fff">women’s</h4>
+                                <p>273 items</p>
+                                <a href="/productload?id=">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                        <div class="categories__item set-bg" data-setbg="/img/categories/bangkok-thailand-february-nike-football-lauch-new-mercurial-vapor-most-famous-football-boots-designed-agility-player-209648095.jpg">
+                            <div class="categories__text" style="margin-top: 10rem;">
+                                <h4 style="color:#fff">Boots</h4>
+                                <p>159 items</p>
+                                <a href="/productload?id=63fc4d82525d9f139f373df1">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 p-0">
+                        <div class="categories__item set-bg" data-setbg="/img/categories/david-beckham-gq-0416-2.webp">
+                            <div class="categories__text" style="margin-top: 10rem;">
+                                <h4 style="color:#fff">Accessories</h4>
+                                <p>792 items</p>
+                                <a href="/productload?id=63fc756d22696b857c714d65">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Categories Section End -->
+
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="section-title">
+                    <h4>New product</h4>
+                </div>
+            </div>
+            <!-- 
+            <div class="col-lg-8 col-md-8">
+                <ul class="filter__controls">
+                    <li class="active" data-filter="*">All</li>
+                    <li data-filter=".women">Jerseys</li>
+                    <li data-filter=".men">Shorts</li>
+                    <li data-filter=".kid">Boots</li>
+                    <li data-filter=".accessories">Football</li>
+                    <li data-filter=".cosmetic">Accessories</li>
+                </ul>
+            </div>
+        </div> -->
+        <div class="row property__gallery">
+            <div class="col-lg-3 col-md-4 col-sm-6 mix women">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/categories/Barcelona-Home-Jersey-22-23-Season-Player-Edition-scaled.jpg">
+                        <div class="label new">New</div>
+                        <ul class="product__hover">
+                            <li><a href="/img/product/product-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Buttons tweed blazer</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 59.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix men">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="/img/categories/91F04+Z5uNL._UL1500_.jpg">
+                        <ul class="product__hover">
+                            <li><a href="/img/product/product-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Flowy striped skirt</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 49.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix accessories">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/categories/80dcc9df530a5a3ec7c882d3707da744.webp">
+                        <div class="label stockout">out of stock</div>
+                        <ul class="product__hover">
+                            <li><a href="/img/product/product-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Cotton T-Shirt</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 59.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix cosmetic">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/categories/36ad857e86414f31a5aaae9700babb97_9366.webp">
+                        <ul class="product__hover">
+                            <li><a href="img/product/product-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Slim striped pocket shirt</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 59.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix kid">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/categories/ac17d34d402f9c3f010d08925ad9f1fa.webp">
+                        <ul class="product__hover">
+                            <li><a href="img/product/product-5.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Fit micro corduroy shirt</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 59.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
+                <div class="product__item sale">
+                    <div class="product__item__pic set-bg" data-setbg="img/categories/-original-imagg7esbrhhrdzv.webp">
+                        <div class="label sale">Sale</div>
+                        <ul class="product__hover">
+                            <li><a href="img/product/product-6.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Tropical Kimono</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 49.0 <span>$ 59.0</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
+                        <ul class="product__hover">
+                            <li><a href="img/product/product-7.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Contrasting sunglasses</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 59.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mix women men kid accessories cosmetic">
+                <div class="product__item sale">
+                    <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
+                        <div class="label">Sale</div>
+                        <ul class="product__hover">
+                            <li><a href="img/product/product-8.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Water resistant backpack</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 49.0 <span>$ 59.0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+
+<!-- Banner Section Begin -->
+<section class="banner set-bg" data-setbg="img/categories/_117751671_satan-shoes1.jpg" style="height: 38rem;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7 col-lg-8 m-auto">
+                <div class="banner__slider owl-carousel">
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span style="color: #0a0a0a;">The Chloe Collection</span>
+                            <h1 style="color: #fff;">The Project Jacket</h1>
+                            <a  style="color: #fff;"href="#">Shop now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span style="color: #0a0a0a;">The Chloe Collection</span>
+                            <h1 style="color: #fff;">The Project Jacket</h1>
+                            <a style="color: #fff;" href="#">Shop now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            <span style="color: #0a0a0a;">The Chloe Collection</span>
+                            <h1 style="color: #fff;" >The Project Jacket</h1>
+                            <a style="color: #fff;" href="#">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include("../layouts/userfooter.ejs") %>

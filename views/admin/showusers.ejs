@@ -1,0 +1,79 @@
+<%- include("../layouts/adminheader.ejs") %>
+    <%- include("../layouts/bars.ejs") %>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+           
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                  
+                    
+                        <div class="dropdown-menu " aria-labelledby="dropdownAccount">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-muted" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                            
+                        </div>            
+
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/img/categories/unnamed.jpg" alt="User"></a>
+                       
+                        
+                </ul>
+            </div>
+        </header>
+    </main>
+ <div style="padding-left: 18rem;" class="card mb-4">
+    <header class="card-header">
+        <h4 class="card-title">User Info</h4>
+    </header>
+   
+ <div class="card-body">
+        <div class="table-responsive">
+            <div class="table-responsive">
+                <table class="table align-middle table-nowrap mb-0">
+                    <thead  class="table-light">
+                        <tr>
+                           
+                            <th class="align-middle" scope="col">Name</th>
+                            <th class="align-middle" scope="col">Email</th>
+                            <th class="align-middle" scope="col">Mobile</th>
+                            <th class="align-middle" scope="col">Action</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            <% 
+                                if(users.length > 0 ){
+                                    for(let i=0;i<users.length;i++){
+                                        %>
+                                        <tr style="background-color:rgb(255, 184, 184) ; left: 5rem; ">
+                                            <td><%= users[i].name %> </td>
+                                            <td><%= users[i].email %> </td>
+                                            <td><%=users[i].phone%></td>
+                                            <td>
+                                                <% if (users[i].blocked) { %>
+                                                    <a href="/admin/blockuser?id=<%= users[i]._id %>" class="btn btn-warning">Unblock</a>
+                                                <% } else { %>
+                                                    <a href="/admin/blockuser?id=<%= users[i]._id %>" class="btn btn-primary">Block</a>
+                                                <% } %>
+                                            </td> 
+                                        
+                                        </tr>
+                                        <%
+                                    }
+                                }  else{ %>
+                                  <tr>
+                                      <td colspan="5">users not found </td>
+                                  </tr>
+                                  <% }
+                            %>
+                              
+                              
+                          </tbody>
+                </table>
+            </div>
+        </div> <!-- table-responsive end// -->
+    </div>
+
+    <%- include("../layouts/adminfooter.ejs") %>
+

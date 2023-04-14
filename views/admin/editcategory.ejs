@@ -1,0 +1,60 @@
+<%- include("../layouts/adminheader.ejs") %>
+    <%- include("../layouts/bars.ejs") %>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+           
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                  
+                    
+                        <div class="dropdown-menu " aria-labelledby="dropdownAccount">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-muted" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                            
+                        </div>            
+
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/img/categories/unnamed.jpg" alt="User"></a>
+                       
+                        
+                </ul>
+            </div>
+        </header>
+        <section class="content-main">
+            <div class="content-header">
+                <div>
+                    <h2 class="content-title card-title">Edit Categories </h2>
+                    
+                </div>
+                <div>
+                    <input type="text" placeholder="Search Categories" class="form-control bg-white">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form action="" method="post">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Name</label>
+                                    <input type="hidden" name="id" value="<%=categories._id %>">
+                                    <input type="text" name="name" placeholder="Type here" class="form-control" id="product_name" value="<%=categories.name%>"required />
+                                </div>
+                               
+                               
+                                <div class="mb-4">
+                                    <label class="form-label">Description</label>
+                                    
+                                    <textarea name="description" placeholder="Type here" class="form-control" value="<%=categories.description%>" required><%=categories.description%></textarea>
+                                </div>
+                                <div class="d-grid">
+                                    <button  type="submit" class="btn btn-primary">update category</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include("../layouts/adminfooter.ejs") %>
