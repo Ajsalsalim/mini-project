@@ -301,7 +301,7 @@ const returnorders = async (req, res) => {
           const walletData = userdetails.wallet;
           userData = await User.updateOne({ _id: orderdetails.userId }, { $set: { wallet: walletData + orderdetails.payment.amount } })
       }
-      res.redirect("/userProfile")
+      res.redirect("/profileload")
   } catch (error) {
       console.log(error.message);
   }
