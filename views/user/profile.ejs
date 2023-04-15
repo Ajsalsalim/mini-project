@@ -57,7 +57,7 @@
                      </div>
                      <p class="text-danger"></p>
                    <div style="display: flex;justify-content: center;margin-bottom: 2%;">
-                     <a href="/edituser" class="btn btn-success btn-sm mt-2"> Edit</a>
+                   
                      
                    </div>
              </form>
@@ -114,6 +114,7 @@
     <section class="checkout spad">
         <div class="container">
             <form action="/addaddress" method="post" class="checkout__form">
+
                 <div class="row">
                     <div class="col-lg-8">
                         <h5>ADD ADDRESS</h5>
@@ -167,9 +168,10 @@
                                 </div>
                             </div>
                             <div >
-
+                                <input type="hidden" name="hidden" value="<%=userData.name%>">
                                 <button type="submit" style="margin-left: 44rem;" class="btn btn-primary">Save</button>
                              </div>
+                            </form>
                              <div class="row" style="margin-top: 3rem; margin-left: 0.5rem;">
                                 <%if(useraddress.length>0){
                                     for(let key of useraddress){%>
@@ -193,7 +195,7 @@
                         </div>
                        
                     </div>
-                </form>
+                
             </div>
         </section>
   

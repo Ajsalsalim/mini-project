@@ -614,7 +614,9 @@ const profileload =async (req,res)=>{
   }
   const addnewaddress=async(req,res)=>{
     try {
-      
+      const hidden = req.body.hidden;
+      console.log("hehe");
+      console.log(req.body.address)
         const newAddress = new address({
           firstname: req.body.firstname,
           lastname: req.body.lastname,
@@ -628,13 +630,36 @@ const profileload =async (req,res)=>{
           userId: req.session.user_id
         })
         const newaddress =await newAddress.save();
-        if(newaddress){
+        if(newaddress&&hidden){
             res.redirect("/profileload");
+        }else{
+          res.redirect("/checkoutload")
         }
     } catch (error) {
       console.log(error.message)
         
     }
+}
+const addfromcheckout =async(req,res)=>{
+try{
+  const categories = await category.find({ deleted: false });
+  const subcategories = await subcategory.find({ deleted: false });
+
+  res.render("addressfromcheck",{
+    user:req.session.username,
+    loggedIn:req.session.userLogged,
+    categories:categories,
+    subcategories:subcategories
+
+  })
+
+}catch(error){
+  console.log(error.message);
+}
+
+
+
+
 }
 const editaddress = async(req,res)=>{
   try{
@@ -776,6 +801,7 @@ module.exports = {
   editcheckoutadd,
   updatecheckoutadd,
   delcheckoutadd,
+  addfromcheckout
  
   
 };

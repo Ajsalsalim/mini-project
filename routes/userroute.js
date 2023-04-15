@@ -60,6 +60,7 @@ user_route.post("/applycoupon",usermiddleware.isLogin,usercontroller.applycoupon
 
 user_route.get("/profileload",usermiddleware.isLogin,usercontroller.profileload);
 user_route.post("/addaddress",usermiddleware.isLogin,usercontroller.addnewaddress);
+user_route.get("/addfromcheckout",usermiddleware.isLogin,usercontroller.addfromcheckout);
 user_route.get("/editaddress",usermiddleware.isLogin,usercontroller.editaddress)
 user_route.post("/editaddress",usermiddleware.isLogin,usercontroller.updateaddress)
 user_route.get("/deleteaddress",usermiddleware.isLogin,usercontroller.deleteaddress);

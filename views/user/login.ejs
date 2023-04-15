@@ -79,11 +79,22 @@
       <script>
         const accessMessage = document.getElementById('accessMessage');
 
-if (accessMessage) {
-  // Hide the message after 2 seconds
+        if (accessMessage) {
+  // Set initial opacity to 1
+  accessMessage.style.opacity = 1;
+
+  // Fade out the message after 2 seconds
   setTimeout(() => {
-    accessMessage.style.display = 'none';
-  }, 2000);
+    let opacity = 1;
+    const timerId = setInterval(() => {
+      if (opacity <= 0.1) {
+        clearInterval(timerId);
+        accessMessage.style.display = 'none';
+      }
+      accessMessage.style.opacity = opacity;
+      opacity -= opacity * 0.1;
+    }, 50);
+  }, 1000);
 }
 
       </script>
