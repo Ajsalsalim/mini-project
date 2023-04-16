@@ -3,9 +3,17 @@ require('dotenv').config()
 mongoose.set("strictQuery",false)
 
 
-mongoose.connect(process.env.MONGO_CONN,()=>{
-  console.log('database connection established')
-})
+// mongoose.connect(process.env.MONGO_CONN,()=>{
+//   console.log('database connection established')
+// })
+
+
+mongoose.connect(process.env.ATLAS_URI,()=> {
+  console.log('MongoDB Atlas database connection established successfully');
+});
+
+
+
 const ejs = require("ejs")
 const multer= require("multer")
 
