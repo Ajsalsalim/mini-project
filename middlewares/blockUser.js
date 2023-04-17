@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
             console.log(user.name+ "is logging out ....")
             req.session.user_id= null;
             req.session.userLogged = null
-            res.render("login",{message:"you have been blocked by administrator"})
+            res.render("login",{message:"you have been blocked by administrator",access:""})
         }
     }else{
         next();
