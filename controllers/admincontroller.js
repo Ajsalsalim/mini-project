@@ -155,7 +155,7 @@ const logout = async(req,res)=>{
     
     req.session.adminlogged=false
     console.log( req.session.adminlogged);
-    res.render("login")
+    res.redirect("/admin")
 } catch(error){
     console.log(error.message);
 }
