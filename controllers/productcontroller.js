@@ -104,7 +104,7 @@ const productload = async (req, res) => {
       const subcategories = await subcategory.find({deleted:false})
       if(req.session.productadded){
        
-        res.render("products",{message:"you have succesfully added product",categories:categories,subcategories:subcategories})
+        res.render("products",{message:"product added",categories:categories,subcategories:subcategories})
       }else{
         res.render("products",{message:"",categories:categories,subcategories:subcategories})
       }
@@ -121,17 +121,23 @@ const productload = async (req, res) => {
   const addproductprocess = async (req, res) => {
     try {
         const { name, description, price,stock, mycategory, mysubcategory } = req.body;
+        const lowercasename = name.toLowerCase()
         const imagePaths = req.files.map(file => file.filename);
         console.log(imagePaths)
+        const categories = await category.find({deleted:false})
+        const subcategories = await subcategory.find({deleted:false})
 
-      
-        if(!imagePaths){
-          return 
+
+        const existingProduct = await product.findOne({ name: name });
+        if (existingProduct) {
+          req.session.productadded = false;
+          res.render('products', { message: 'Product already exists',categories:categories,subcategories:subcategories });
+          
         }
  
   
           const newproduct = new product({
-              name,
+              name: lowercasename,
               description,
               price,
               stock,
