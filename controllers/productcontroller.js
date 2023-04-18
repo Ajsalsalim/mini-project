@@ -129,6 +129,7 @@ const productload = async (req, res) => {
 
 
         const existingProduct = await product.findOne({ name: name });
+        
         if (existingProduct) {
           req.session.productadded = false;
           res.render('products', { message: 'Product already exists',categories:categories,subcategories:subcategories });
