@@ -507,7 +507,7 @@ const removefromcart = async (req, res) => {
     console.log(error);
   }
 };
-const checkoutload= async(req,res)=>{
+const  checkoutload= async(req,res)=>{
   try{
     const userData = req.session.user_id
     const useraddress = await address.find({userId:userData})

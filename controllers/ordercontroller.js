@@ -262,6 +262,7 @@ const cancelorders=async(req,res)=>{
   }
   if (state == "cancelled" && orderdetails.payment.method != "COD") {
     userdetails = await User.findOne({ _id: orderdetails.userId });
+    console.log("naye"+userdetails);
     const walletData = userdetails.wallet;
     userData = await User.updateOne({ _id: orderdetails.userId }, { $set: { wallet: walletData + orderdetails.payment.amount } })
 

@@ -92,7 +92,7 @@ const productload = async (req, res) => {
         loggedIn: req.session.userLogged,
         categories: categories,
         subcategories: subcategories,
-        products: products,
+        products: products
       });
     } catch (error) {
       console.log(error.message);
