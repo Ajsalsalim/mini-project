@@ -84,6 +84,7 @@ const productload = async (req, res) => {
       const productid = req.query.productid;
   
       const products = await product.findById(productid);
+      console.log(products.images)
   
       const categories = await category.find({ deleted: false });
       const subcategories = await subcategory.find({ deleted: false });

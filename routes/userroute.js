@@ -12,6 +12,20 @@ const usermiddleware = require("../middlewares/usermiddleware")
 const usercontroller= require("../controllers/usercontroller")
 const ordercontroller= require("../controllers/ordercontroller")
 const productcontroller = require("../controllers/productcontroller")
+const multer = require('multer');
+
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
+
+const upload = multer({ storage: storage });
 
 
 
