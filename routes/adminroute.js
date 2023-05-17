@@ -14,19 +14,30 @@ const subcatcontroller = require("../controllers/subcatcontroller")
 const couponcontroller = require("../controllers/couponcontroller")
 
 const multer = require('multer');
+const path = require("path")
 
 
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './public/uploads')
+let Storage = multer.diskStorage({
+  destination: "./public/uploads/",
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+    );
   },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname)
-  }
 });
 
-const upload = multer({ storage: storage });
+let upload = multer({
+  storage: Storage,fileFilter: function (params, file, callback) {
+      if (file.mimetype == "image/png" || file.mimetype == "image/jpeg" || file.mimetype == "image/jpg") {
+        callback(null, true)
+      } else {
+        console.log('only jpg & png file supported !');
+        callback(null, false)
+}
+}
+})
 
 
 
