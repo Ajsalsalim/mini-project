@@ -57,6 +57,7 @@ const verifylogin =  async(req,res)=>{
                 }else{
                     req.session.admin_id = userData._id;
                     req.session.adminlogged = true;
+                    
                     res.redirect("/admin/dashboard")
                 }
 
@@ -74,15 +75,19 @@ const verifylogin =  async(req,res)=>{
 const loaddashboard = async (req,res)=>{
     try {
         const products = await product.find()
+        console.log(products);
     let pds = [], qty = []
     products.map(x => {
       pds = [...pds, x.name]
       qty = [...qty, x.stock]
     })
     const arr = [];
+    console.log("jhkjh");
     const orders = await order.find().populate('products.item.productId');
+    console.log(orders);
     for (let Orders of orders) {
       for (let product of Orders.products.item) {
+        console.log(product.productId.name);
         const index = arr.findIndex(obj => obj.product == product.productId.name);
         if (index !== -1) {
           arr[index].quantity += product.quantity;
@@ -90,7 +95,7 @@ const loaddashboard = async (req,res)=>{
           arr.push({ product: product.productId.name, quantity: product.quantity });
         }
       }
-    }
+    } console.log("wertyhj");
     const key1 = [];
     const key2 = [];
     arr.forEach(obj => {
@@ -104,11 +109,13 @@ const loaddashboard = async (req,res)=>{
     for(let Orders of orders){
        totalRevenue += Orders.products.totalprice;
      }
+     console.log("hsdhfgh");
 
 
 
 
         const userData = await User.findById({_id:req.session.admin_id});
+        console.log(userData);
         res.render('dashboard',{admin:userData,key1,key2,pds,qty,sales,totalRevenue});
     } catch (error) {
         console.log(error.message);
